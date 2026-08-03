@@ -1,0 +1,73 @@
+﻿@model List<IT_ELECTIVE_2_MIDTERM_H1_H2_H3.Models.Entities.Product>
+
+@{
+    ViewData["Title"] = "Products";
+}
+
+<h2 class="mb-4">Tech Hardware Store</h2>
+
+<a asp-controller="Cart"
+   asp-action="Index"
+   class="btn btn-primary mb-3">
+    View Cart
+</a>
+
+<table class="table table-bordered table-striped">
+
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Quantity</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <form asp-action="AddToCart" method="post">
+
+                    <input type="hidden" name="ProductId" value="@item.Id" />
+
+                <td>@item.Name</td>
+
+                <td>₱@item.Price</td>
+
+                <td>
+                        @if (item.StockQuantity == 0)
+                        {
+                        <span class="text-danger">Out of Stock</span>
+                        }
+                        else
+                        {
+                            @item.StockQuantity
+                        }
+                </td>
+
+                <td>
+                    <input type="number"
+                           name="Quantity"
+                           value="1"
+                           min="1"
+                           class="form-control" />
+                </td>
+
+                <td>
+                    <button type="submit" class="btn btn-success">
+                        Add to Cart
+                    </button>
+                </td>
+
+                </form>
+
+            </tr>
+        }
+
+    </tbody>
+
+</table>
