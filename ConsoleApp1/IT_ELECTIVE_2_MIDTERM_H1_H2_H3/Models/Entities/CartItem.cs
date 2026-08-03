@@ -1,0 +1,18 @@
+﻿namespace IT_ELECTIVE_2_MIDTERM_H1_H2_H3.Models.Entities
+{
+    public class CartItem
+    {
+        public int ProductId { get; set; }
+
+        public string ProductName { get; set; } = string.Empty;
+
+        public int Quantity { get; set; }
+
+        public decimal UnitPrice { get; set; }
+
+        public decimal LineTotal
+        {
+            get { return Quantity * UnitPrice; }
+        }
+    }
+}
