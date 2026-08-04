@@ -1,0 +1,33 @@
+﻿@model IT_ELECTIVE_2_MIDTERM_H1_H2_H3.Models.Entities.Transaction
+
+<h2>Transaction Details</h2>
+
+<p><strong>Transaction #:</strong> @Model.TransactionId</p>
+<p><strong>Customer:</strong> @Model.CustomerName</p>
+<p><strong>Date:</strong> @Model.Date</p>
+<p><strong>Total:</strong> ₱@Model.TotalAmount</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Qty</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model.PurchasedItems)
+        {
+            <tr>
+                <td>@item.ProductName</td>
+                <td>@item.Quantity</td>
+                <td>₱@item.UnitPrice</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="History" class="btn btn-secondary">
+    Back
+</a>

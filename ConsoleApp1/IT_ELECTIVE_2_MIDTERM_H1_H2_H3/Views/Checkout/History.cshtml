@@ -1,0 +1,34 @@
+﻿@model List<IT_ELECTIVE_2_MIDTERM_H1_H2_H3.Models.Entities.Transaction>
+
+<h2>Transaction History</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Date</th>
+            <th>Customer</th>
+            <th>Total</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.TransactionId</td>
+                <td>@item.Date</td>
+                <td>@item.CustomerName</td>
+                <td>₱@item.TotalAmount</td>
+                <td>
+                    <a asp-action="Details"
+                       asp-route-id="@item.TransactionId"
+                       class="btn btn-primary btn-sm">
+                        View
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
